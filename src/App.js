@@ -12,6 +12,7 @@ import console_monkey_patch, { getD3Data } from './console-monkey-patch';
 import DJControls from './Components/DJControls';
 import PlayButton from './Components/PlayButton';
 import PreprocessText from './Components/PreprocessText'
+import  Volume from './Components/Volume';
 import { Preprocess } from './utils/Preprocessing';
 
 
@@ -94,9 +95,12 @@ export default function StrudelDemo() {
         <div>
             <h2>Strudel Demo</h2>
             <div className='controls'>
-                <PlayButton onPlay={() => {setState("play"); handlePlay()}} onStop={() => {setState("stop"); handleStop()}} />
-                <div className='col-md-8'>
-                    <DJControls volumeChange={volume} onVolumeChange={(e) => setVolume(e.target.value)} />
+                <div className='controls-section'>
+                    <PlayButton onPlay={() => {setState("play"); handlePlay()}} onStop={() => {setState("stop"); handleStop()}} />
+                    <Volume volumeChange={volume} onVolumeChange={(e) => setVolume(e.target.value)}/>
+                </div>
+                <div className='controls-section'>
+                    <DJControls  />
                 </div>
             </div>
             <main>
