@@ -92,7 +92,7 @@ export default function StrudelDemo() {
 
 
     return (
-        <div>
+        <div className='app'>
             <h2>Strudel Demo</h2>
             <div className='controls'>
                 <div className='controls-section'>

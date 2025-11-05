@@ -1,6 +1,9 @@
 function DJControls() {
     return (
         <>
+            
+
+
             <div className="form-check">
                 <input className="form-check-input" type="checkbox" value="" id="s1"/>
                 <label className="form-check-label" htmlFor="s1">
