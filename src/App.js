@@ -11,7 +11,6 @@ import { stranger_tune } from './tunes';
 import console_monkey_patch, { getD3Data } from './console-monkey-patch';
 import DJControls from './Components/DJControls';
 import PlayButton from './Components/PlayButton';
-import ProcButtons from './Components/ProcButtons'
 import PreprocessText from './Components/PreprocessText'
 import { Preprocess } from './utils/Preprocessing';
 
@@ -94,26 +93,22 @@ export default function StrudelDemo() {
     return (
         <div>
             <h2>Strudel Demo</h2>
+            <div className='controls'>
+                <PlayButton onPlay={() => {setState("play"); handlePlay()}} onStop={() => {setState("stop"); handleStop()}} />
+                <div className='col-md-8'>
+                    <DJControls volumeChange={volume} onVolumeChange={(e) => setVolume(e.target.value)} />
+                </div>
+            </div>
             <main>
-
                 <div className="container-fluid">
                     <div className="row">
-                        <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+                        <h4>Text to preprocess:</h4>
+                        <div className="col-md-6" style={{ height: '60vh', overflowY: 'auto' }}>
                             <PreprocessText defaultValue={procText} onChange={(e) => setProcText(e.target.value)}/>
                         </div>
-                        <div className="col-md-4">
-                            <nav>
-                                <PlayButton onPlay={() => {setState("play"); handlePlay()}} onStop={() => {setState("stop"); handleStop()}} />
-                            </nav>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+                        <div className="col-md-6" style={{ height: '60vh', overflowY: 'auto' }}>
                             <div id="editor" />
                             <div id="output" />
-                        </div>
-                        <div className="col-md-4">
-                            <DJControls volumeChange={volume} onVolumeChange={(e) => setVolume(e.target.value)} />
                         </div>
                     </div>
                 </div>

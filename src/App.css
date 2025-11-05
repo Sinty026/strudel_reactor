@@ -24,6 +24,16 @@
   color: white;
 }
 
+.controls {
+  padding: 20px;
+  padding-top: 0px;
+}
+
+#proc {
+  height: 100%;
+  box-sizing: border-box;
+}
+
 .App-link {
   color: #61dafb;
 }
