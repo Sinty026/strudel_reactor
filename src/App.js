@@ -93,7 +93,7 @@ export default function StrudelDemo() {
 
     return (
         <div className='app'>
-            <h2>Strudel Demo</h2>
+            <h2>Strudel Studio</h2>
             <div className='controls'>
                 <div className='controls-section'>
                     <PlayButton onPlay={() => {setState("play"); handlePlay()}} onStop={() => {setState("stop"); handleStop()}} />
