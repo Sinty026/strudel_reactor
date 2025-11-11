@@ -28,28 +28,48 @@ export default function StrudelDemo() {
 
     const hasRun = useRef(false);
 
+    //Function for the playback
     const handlePlay = () => {
         let outputText = Preprocess({ inputText: procText, volume: volume});
         globalEditor.setCode(outputText);
         globalEditor.evaluate();
     } 
 
+    //stops the playback
     const handleStop = () => {
         globalEditor.stop();
     }
 
-    const [procText, setProcText] = useState(stranger_tune);
+    const [procText, setProcText] = useState(stranger_tune); //stores the current songs text
+    const [volume, setVolume] = useState(1); //stores the current volume
+    const [state, setState] = useState("stop"); //tracks if strudle is playing or stopped
+    const [isMuted, setIsMuted] = useState(false); // whether the audio is muted
+    const [lastVolume, setLastVolume] = useState(1); // stores the volume before muting
 
-    const [volume, setVolume] = useState(1);
+    //adjusts the volume slider
+    const handleVolumeChange = (e) => {
+        const newVolume = parseFloat(e.target.value);
+        setVolume(newVolume);
+        setLastVolume(newVolume);
+    }
 
-    const [state, setState] = useState("stop");
+    //toggles mute on and off
+    const handleMuteToggle = () => {
+        if (!isMuted) {
+            setLastVolume(volume);
+            setVolume(0);
+            setIsMuted(true);
+        } else {
+            setVolume(lastVolume);
+            setIsMuted(false);
+        }
+    }
 
     useEffect(() => {
         if(state === "play"){
             handlePlay();
         }
     }, [volume])
-
 
 
     useEffect(() => {
@@ -97,7 +117,7 @@ export default function StrudelDemo() {
             <div className='controls'>
                 <div className='controls-section'>
                     <PlayButton onPlay={() => {setState("play"); handlePlay()}} onStop={() => {setState("stop"); handleStop()}} />
-                    <Volume volumeChange={volume} onVolumeChange={(e) => setVolume(e.target.value)}/>
+                    <Volume volumeChange={volume} onVolumeChange={handleVolumeChange} isMuted={isMuted} onMuteToggle={handleMuteToggle} />
                 </div>
                 <div className='controls-section'>
                     <DJControls  />
