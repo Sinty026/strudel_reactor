@@ -1,4 +1,4 @@
-function DJControls() {
+function DJControls({ instaments, onInstramentToggle }) {
     return (
         <>
             <div>
@@ -11,9 +11,9 @@ function DJControls() {
 
 
             <div className="form-check">
-                <input className="form-check-input" type="checkbox" value="" id="s1"/>
-                <label className="form-check-label" htmlFor="s1">
-                        s1
+                <input className="form-check-input" type="checkbox" value="" id="bassline" checked={instaments} onChange={() => onInstramentToggle("bassline")}/>
+                <label className="form-check-label" htmlFor="bassline">
+                        Bassline
                     </label>
             </div>
 

@@ -1,7 +1,7 @@
 import './App.css';
 import { use, useEffect, useRef, useState } from "react";
 import { StrudelMirror } from '@strudel/codemirror';
-import { evalScope } from '@strudel/core';
+import { evalScope, set } from '@strudel/core';
 import { drawPianoroll } from '@strudel/draw';
 import { initAudioOnFirstClick } from '@strudel/webaudio';
 import { transpiler } from '@strudel/transpiler';
@@ -14,6 +14,7 @@ import PlayButton from './Components/PlayButton';
 import PreprocessText from './Components/PreprocessText'
 import  Volume from './Components/Volume';
 import { Preprocess } from './utils/Preprocessing';
+import { preconnect } from 'react-dom';
 
 
 
@@ -30,7 +31,7 @@ export default function StrudelDemo() {
 
     //Function for the playback
     const handlePlay = () => {
-        let outputText = Preprocess({ inputText: procText, volume: volume});
+        let outputText = Preprocess({ inputText: procText, volume: volume, instraments: instraments });
         globalEditor.setCode(outputText);
         globalEditor.evaluate();
     } 
@@ -45,6 +46,13 @@ export default function StrudelDemo() {
     const [state, setState] = useState("stop"); //tracks if strudle is playing or stopped
     const [isMuted, setIsMuted] = useState(false); // whether the audio is muted
     const [lastVolume, setLastVolume] = useState(1); // stores the volume before muting
+    const [instraments, setInstraments] = useState({ //stores which instraments are active
+        bassline: true,
+    }); // tracks which instraments are active
+
+    //toggles instraments on and off
+    const handleInstramentChange = (e) => {
+        setInstraments(prev => ({...prev, [e]: !prev[e] }))};
 
     //adjusts the volume slider
     const handleVolumeChange = (e) => {
@@ -120,7 +128,7 @@ export default function StrudelDemo() {
                     <Volume volumeChange={volume} onVolumeChange={handleVolumeChange} isMuted={isMuted} onMuteToggle={handleMuteToggle} />
                 </div>
                 <div className='controls-section'>
-                    <DJControls  />
+                    <DJControls  instraments={instraments} onInstramentToggle={handleInstramentChange}/>
                 </div>
             </div>
             <main>
