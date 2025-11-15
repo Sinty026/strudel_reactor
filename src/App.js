@@ -31,7 +31,7 @@ export default function StrudelDemo() {
 
     //Function for the playback
     const handlePlay = () => {
-        let outputText = Preprocess({ inputText: procText, volume: volume, instraments: instraments });
+        let outputText = Preprocess({ inputText: procText, volume: volume, instruments: instruments });
         globalEditor.setCode(outputText);
         globalEditor.evaluate();
     } 
@@ -46,13 +46,14 @@ export default function StrudelDemo() {
     const [state, setState] = useState("stop"); //tracks if strudle is playing or stopped
     const [isMuted, setIsMuted] = useState(false); // whether the audio is muted
     const [lastVolume, setLastVolume] = useState(1); // stores the volume before muting
-    const [instraments, setInstraments] = useState({ //stores which instraments are active
+    const [instruments, setInstruments] = useState({ //stores which instruments are active
         bassline: true,
+        drums1: true,
     }); // tracks which instraments are active
 
     //toggles instraments on and off
-    const handleInstramentChange = (e) => {
-        setInstraments(prev => ({...prev, [e]: !prev[e] }))};
+    const handleinstrumentsChange = (e) => {
+        setInstruments(prev => ({...prev, [e]: !prev[e] }))};
 
     //adjusts the volume slider
     const handleVolumeChange = (e) => {
@@ -128,7 +129,7 @@ export default function StrudelDemo() {
                     <Volume volumeChange={volume} onVolumeChange={handleVolumeChange} isMuted={isMuted} onMuteToggle={handleMuteToggle} />
                 </div>
                 <div className='controls-section'>
-                    <DJControls  instraments={instraments} onInstramentToggle={handleInstramentChange}/>
+                    <DJControls  instruments={instruments} onInstrumentsoggle={handleinstrumentsChange}/>
                 </div>
             </div>
             <main>

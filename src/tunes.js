@@ -59,7 +59,7 @@ note(pick(arpeggiator1, "<0 1 2 3>/2"))
 .postgain(pick(gain_patterns, pattern))
 
 
-drums:
+{$MUTE_DRUMS1}drums:
 stack(
   s("tech:5")
   .postgain(6)
