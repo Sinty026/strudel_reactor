@@ -25,9 +25,9 @@ function DJControls({ instruments, onInstrumentsoggle }) {
             </div>
 
             <div className="form-check">
-                <input className="form-check-input" type="checkbox" value="" id="d2"  />
-                <label className="form-check-label" htmlFor="d2">
-                    d2
+                <input className="form-check-input" type="checkbox" value="" id="drums2" checked={instruments.drums2} onChange={() => onInstrumentsoggle("drums2")} />
+                <label className="form-check-label" htmlFor="drums2">
+                    Drums 2
                 </label>
             </div>
         </>

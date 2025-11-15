@@ -49,6 +49,7 @@ export default function StrudelDemo() {
     const [instruments, setInstruments] = useState({ //stores which instruments are active
         bassline: true,
         drums1: true,
+        drums2: true,
     }); // tracks which instraments are active
 
     //toggles instraments on and off
