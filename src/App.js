@@ -15,7 +15,7 @@ import PreprocessText from './Components/PreprocessText'
 import  Volume from './Components/Volume';
 import { Preprocess } from './utils/Preprocessing';
 import { preconnect } from 'react-dom';
-
+import Download_UploadButton from './Components/Download_UploadButton';
 
 
 let globalEditor = null;
@@ -131,6 +131,9 @@ export default function StrudelDemo() {
                 </div>
                 <div className='controls-section'>
                     <DJControls  instruments={instruments} onInstrumentsoggle={handleinstrumentsChange}/>
+                </div>
+                <div className='downloadButton'>
+                    <Download_UploadButton/>
                 </div>
             </div>
             <main>

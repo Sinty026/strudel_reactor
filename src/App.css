@@ -4,7 +4,7 @@
 }
 
 .controls {
-  display: felx;
+  display: flex;
   gap: 30px;
   background-color: #2A2A2A;
   border-bottom: 2px solid #333;
@@ -12,13 +12,16 @@
   margin: 20px 0;
   align-items: flex-start;
   padding: 10px;
+  justify-content: space-between;
 }
+
 
 .controls-section {
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
   align-items: center;
+  padding: 10px;
 }
 
 .input-group {
@@ -35,7 +38,14 @@
   box-sizing: border-box;
 }
 
-
+.downloadButton {
+  margin-left: auto;
+  align-items: center;
+}
+.downloadButton button {
+  margin-right: 5px;
+  margin-left: 5px;
+}
 
 
 
