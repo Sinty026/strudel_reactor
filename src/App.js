@@ -116,8 +116,8 @@ export default function StrudelDemo() {
                 });
                 
             document.getElementById('proc').value = stranger_tune
-            globalEditor.setCode(procText);
         }
+        globalEditor.setCode(procText);
     }, [procText]);
 
 
