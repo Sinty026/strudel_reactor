@@ -133,7 +133,7 @@ export default function StrudelDemo() {
                     <DJControls  instruments={instruments} onInstrumentsoggle={handleinstrumentsChange}/>
                 </div>
                 <div className='downloadButton'>
-                    <Download_UploadButton songText={procText}/>
+                    <Download_UploadButton songText={procText} onUpload={(loadedSongData) => { setProcText(loadedSongData);}}/>
                 </div>
             </div>
             <main>

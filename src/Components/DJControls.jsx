@@ -2,7 +2,7 @@ function DJControls({ instruments, onInstrumentsoggle }) {
     return (
         <>
             <div>
-                <select class="form-select" aria-label="Default select example">
+                <select className="form-select" aria-label="Default select example">
                 <option value="1">Select a song</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
