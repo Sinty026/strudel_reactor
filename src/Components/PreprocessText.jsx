@@ -1,9 +1,9 @@
 import './PreprocessText.css';
 
-function PreprocessText({ defaultValue, onChange }) {
+function PreprocessText({ value, onChange }) {
     return (
         <>
-            <textarea className="form-control" rows="15" defaultValue={defaultValue} onChange={onChange} id="proc"></textarea>
+            <textarea className="form-control" rows="15" value={value} onChange={onChange} id="proc"></textarea>
         </>
     );
 

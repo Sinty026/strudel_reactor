@@ -141,7 +141,7 @@ export default function StrudelDemo() {
                     <div className="row">
                         <h4>Text to preprocess:</h4>
                         <div className="col-md-6" style={{ height: '60vh', overflowY: 'auto' }}>
-                            <PreprocessText defaultValue={procText} onChange={(e) => setProcText(e.target.value)}/>
+                            <PreprocessText value={procText} onChange={(e) => setProcText(e.target.value)}/>
                         </div>
                         <div className="col-md-6" style={{ height: '60vh', overflowY: 'auto' }}>
                             <div id="editor" />

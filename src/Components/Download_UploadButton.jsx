@@ -53,7 +53,6 @@ export default function Download_UploadButton({ songText, onUpload }) {
                         //check if the json has the songData field
                         if(json.songData){
                             onUpload(json.songData);
-                            alert("File uploaded successfully!");
                         } else {
                             // invalid format
                             alert("Invalid file format.");
