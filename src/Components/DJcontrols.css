@@ -1,0 +1,10 @@
+.speed-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 15px;
+}
+
+.speed-control input {
+    width: 80px;
+}
