@@ -31,7 +31,7 @@ export default function StrudelDemo() {
 
     //Function for the playback
     const handlePlay = () => {
-        let outputText = Preprocess({ inputText: procText, volume: volume, instruments: instruments });
+        let outputText = Preprocess({ inputText: procText, volume: volume, instruments: instruments, speed: speed });
         globalEditor.setCode(outputText);
         globalEditor.evaluate();
     } 
@@ -51,6 +51,14 @@ export default function StrudelDemo() {
         drums1: true,
         drums2: true,
     }); // tracks which instraments are active
+    const [speed, setSpeed] = useState(1); //stores the current speed
+
+    //adjusts the speed input
+    const handelSpeedChange = (value) => {
+        const newSpeed = parseFloat(value);
+        setSpeed(newSpeed);
+    };
+
 
     //toggles instraments on and off
     const handleinstrumentsChange = (e) => {
@@ -80,7 +88,7 @@ export default function StrudelDemo() {
         if(state === "play"){
             handlePlay();
         }
-    }, [volume, instruments])
+    }, [volume, instruments, speed]);
 
 
     useEffect(() => {
@@ -131,7 +139,7 @@ export default function StrudelDemo() {
                     <Volume volumeChange={volume} onVolumeChange={handleVolumeChange} isMuted={isMuted} onMuteToggle={handleMuteToggle} />
                 </div>
                 <div className='controls-section'>
-                    <DJControls  instruments={instruments} onInstrumentsoggle={handleinstrumentsChange}/>
+                    <DJControls  instruments={instruments} onInstrumentsoggle={handleinstrumentsChange} speed={speed} onSpeedChange={handelSpeedChange}/>
                 </div>
                 <div className='downloadButton'>
                     <Download_UploadButton songText={procText} onUpload={(loadedSongData) => { setProcText(loadedSongData);}}/>
