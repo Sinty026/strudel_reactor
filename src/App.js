@@ -54,7 +54,8 @@ export default function StrudelDemo() {
 
     //toggles instraments on and off
     const handleinstrumentsChange = (e) => {
-        setInstruments(prev => ({...prev, [e]: !prev[e] }))};
+        setInstruments(prev => ({...prev, [e]: !prev[e] }))
+    };
 
     //adjusts the volume slider
     const handleVolumeChange = (e) => {
@@ -118,7 +119,7 @@ export default function StrudelDemo() {
             document.getElementById('proc').value = stranger_tune
         }
         globalEditor.setCode(procText);
-    }, [procText]);
+    }, [procText, instruments]);
 
 
     return (

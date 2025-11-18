@@ -1,10 +1,16 @@
 export default function Download_UploadButton({ songText, onUpload }) {
 
     const handelDownload = () => {
+        const songName = prompt("Enter a name for your song:", "Enter Song Name");
+        
+        //user cancelled the prompt
+        if(songName === null){
+            return; 
+        }
 
         //create a json object with song name, timestamp, and song data
         const jsonData = {
-            songName: "Strudel Tune",
+            songName: songName,
             timeStamp: new Date().toISOString(),
             songData: songText
 
@@ -21,7 +27,7 @@ export default function Download_UploadButton({ songText, onUpload }) {
         //creates a hidden link and clicks it to start the download
         const downloadLink = document.createElement("a");
         downloadLink.href = downloadUrl;
-        downloadLink.download = `songData-${Date.now()}.json`;
+        downloadLink.download = `${songName}-${Date.now()}.json`;
         downloadLink.click();
 
         //clean up the URL object
