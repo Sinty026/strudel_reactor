@@ -80,7 +80,7 @@ export default function StrudelDemo() {
         if(state === "play"){
             handlePlay();
         }
-    }, [volume])
+    }, [volume, instruments])
 
 
     useEffect(() => {
@@ -119,7 +119,7 @@ export default function StrudelDemo() {
             document.getElementById('proc').value = stranger_tune
         }
         globalEditor.setCode(procText);
-    }, [procText, instruments]);
+    }, [procText]);
 
 
     return (
@@ -149,8 +149,12 @@ export default function StrudelDemo() {
                             <div id="output" />
                         </div>
                     </div>
+                    <div>
+                        <h3>Pianoroll: </h3>
+                        <canvas id="roll"></canvas>                    
+                    </div>
                 </div>
-                <canvas id="roll"></canvas>
+
             </main >
         </div >
     );
